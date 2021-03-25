@@ -29,9 +29,9 @@ responses = requests.get("http://www.bbc.co.uk/")
 
 
 # Requests go one step further in simplifying this process for us
-# If you use response instance in a condition expression,
-# it will evaluate to True if the status code was between 200 and 4000, False otherwise
-# therefore, you can simplify the last example by rewriting the if statement as above
+# If you use a response instance in a condition expression,
+# it will evaluate to True if the status code was between 200 and 400, False otherwise
+# therefore, you can simplify the last example by rewriting the if statement as below
 response = requests.get("https://marvelapp.com/prototype/404/?")
 if response:
     print(f"Success {response.status_code}.")
