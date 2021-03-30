@@ -22,8 +22,11 @@ def weather_checker(response):
     url_weather = f"https://www.metaweather.com/api/location/{woeid}"
     response = requests.get(url_weather)
     result = response.json()
-    print(result) # Need to fetch the weather from the results.
 
+    # Output the weather for the next few days
+    weather_dict = result["consolidated_weather"]
+    for item in weather_dict:
+        print(f"Weather: {item['weather_state_name']}, Date: {item['applicable_date']}")
 
 
 # Asks for a postcode and checks if it's valid
