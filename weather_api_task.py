@@ -36,27 +36,28 @@ class WeatherChecker():
 
         # Fetch woeid needed for getting the weather.
         result_list = response.json()
+        # Gets the closest location to the long/lat.
         location_dict = result_list[0]
         woeid = location_dict["woeid"]
 
-        # Display the weather.
+        # Display the weather with woeid method.
         self.display_weather_woeid(woeid)
 
     # Displays the weather based on the woeid.
     def display_weather_woeid(self, woeid):
-        # Get the weather with the woeid
+        # Get the weather with the woeid.
         url_weather = self.weather_url + f"location/{woeid}"
         response = requests.get(url_weather)
         result = response.json()
 
-        # Output the weather for the next few days
+        # Output the weather for the next few days.
         weather_dict = result["consolidated_weather"]
         for item in weather_dict:
             print(f"Weather: {item['weather_state_name']}, Date: {item['applicable_date']}")
 
 
 if __name__ == "__main__":
-    # Asks for a postcode and checks if it's valid
+    # Asks for a postcode and checks the weather for that area.
     while True:
         postcode = input("Enter a postcode (without a space): ")
         if postcode.lower() == "exit":
